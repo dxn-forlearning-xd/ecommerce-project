@@ -1,0 +1,28 @@
+const categoryMap = {
+  beauty: '美妆',
+  fragrances: '香水',
+  furniture: '家具',
+  groceries: '杂货',
+  'home-decoration': '家居装饰',
+  'kitchen-accessories': '厨房用品',
+  laptops: '笔记本电脑',
+  'mens-shirts': '男士衬衫',
+  'mens-shoes': '男士鞋',
+  'mens-watches': '男士手表',
+  'mobile-accessories': '手机配件',
+  motorcycle: '摩托车',
+  'skin-care': '护肤',
+  smartphones: '智能手机',
+  'sports-accessories': '运动配件',
+  sunglasses: '太阳镜',
+  tablets: '平板电脑',
+  tops: '上衣',
+  vehicle: '交通工具',
+  'womens-bags': '女士包',
+  'womens-dresses': '女士连衣裙',
+  'womens-jewellery': '女士珠宝',
+  'womens-shoes': '女士鞋',
+  'womens-watches': '女士手表',
+};
+
+export default categoryMap;
