@@ -1,24 +1,29 @@
 import { useState } from 'react';
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import {
+  Sidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  sidebarClasses,
+} from 'react-pro-sidebar';
 import { Box, IconButton, Typography, useTheme } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { tokens } from '../../theme';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
-import ReceiptOutlinedIcon from '@mui/icons-material/ReceiptOutlined';
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
-import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+
+import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
+import SsidChartOutlinedIcon from '@mui/icons-material/SsidChartOutlined';
 import PieChartOutlineOutlinedIcon from '@mui/icons-material/PieChartOutlineOutlined';
-import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import { HomeOutlined } from '@mui/icons-material';
+
 import userImage from '../../assets/user.jpg';
 
 const SideBar = () => {
+  const navigate = useNavigate();
+
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -26,11 +31,23 @@ const SideBar = () => {
   const [selected, setSelected] = useState('Dashboard');
 
   return (
-    <Box sx={{}}>
-      <Sidebar style={{ height: '100vh' }} collapsed={isCollapsed}>
+    <Box>
+      <Sidebar
+        rootStyles={{
+          [`.${sidebarClasses.container}`]: {
+            backgroundColor: colors.primary[400],
+            color: colors.grey[100],
+            height: '100vh',
+          },
+
+          [`.ps-menu-button:hover *`]: {
+            color: 'black',
+          },
+        }}
+        collapsed={isCollapsed}
+      >
         <Menu>
           <MenuItem
-            style={{ minHeight: '120px' }}
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
@@ -94,6 +111,152 @@ const SideBar = () => {
                   src={userImage}
                   style={{ cursor: 'pointer', borderRadius: '50%' }}
                 />
+              </Box>
+            )}
+          </MenuItem>
+          <MenuItem
+            icon={isCollapsed ? <HomeOutlined /> : undefined}
+            onClick={() => {
+              setSelected('orders');
+              navigate('/');
+            }}
+            style={{
+              margin: '10px 0 20px 0',
+              color: colors.grey[100],
+            }}
+            active={selected === 'dashboard'}
+          >
+            {!isCollapsed && (
+              <Box display="flex" gap={4} alignItems="center">
+                <IconButton>
+                  <HomeOutlined />
+                </IconButton>
+                <Typography>Dashboard</Typography>
+              </Box>
+            )}
+          </MenuItem>
+          {/* <MenuItem
+            icon={isCollapsed ? <PeopleAltOutlinedIcon /> : undefined}
+            onClick={() => navigate('/')}
+            style={{
+              margin: '10px 0 20px 0',
+              color: colors.grey[100],
+            }}
+            selected={selected}
+            setSelected={setSelected}
+          >
+            {!isCollapsed && (
+              <Box display="flex" gap={4} alignItems="center">
+                <IconButton>
+                  <PeopleAltOutlinedIcon />
+                </IconButton>
+                <Typography>Manage User</Typography>
+              </Box>
+            )}
+          </MenuItem> */}
+          <MenuItem
+            icon={isCollapsed ? <Inventory2OutlinedIcon /> : undefined}
+            onClick={() => {
+              setSelected('products');
+              navigate('/products');
+            }}
+            style={{
+              margin: '10px 0 20px 0',
+              color: colors.grey[100],
+            }}
+            active={selected === 'products'}
+          >
+            {!isCollapsed && (
+              <Box display="flex" gap={4} alignItems="center">
+                <IconButton>
+                  <Inventory2OutlinedIcon />
+                </IconButton>
+                <Typography>Products</Typography>
+              </Box>
+            )}
+          </MenuItem>
+          <MenuItem
+            icon={isCollapsed ? <InventoryOutlinedIcon /> : undefined}
+            onClick={() => {
+              setSelected('orders');
+              navigate('/orders');
+            }}
+            style={{
+              margin: '10px 0 20px 0',
+              color: colors.grey[100],
+            }}
+            active={selected === 'orders'}
+          >
+            {!isCollapsed && (
+              <Box display="flex" gap={4} alignItems="center">
+                <IconButton>
+                  <InventoryOutlinedIcon />
+                </IconButton>
+                <Typography>Orders</Typography>
+              </Box>
+            )}
+          </MenuItem>
+
+          <MenuItem
+            icon={isCollapsed ? <BarChartOutlinedIcon /> : undefined}
+            onClick={() => {
+              setSelected('bar');
+              navigate('/bar');
+            }}
+            style={{
+              margin: '10px 0 20px 0',
+              color: colors.grey[100],
+            }}
+            active={selected === 'bar'}
+          >
+            {!isCollapsed && (
+              <Box display="flex" gap={4} alignItems="center">
+                <IconButton>
+                  <BarChartOutlinedIcon />
+                </IconButton>
+                <Typography>Bar Chart</Typography>
+              </Box>
+            )}
+          </MenuItem>
+          <MenuItem
+            icon={isCollapsed ? <PieChartOutlineOutlinedIcon /> : undefined}
+            onClick={() => {
+              setSelected('pie');
+              navigate('/pie');
+            }}
+            style={{
+              margin: '10px 0 20px 0',
+              color: colors.grey[100],
+            }}
+            active={selected === 'pie'}
+          >
+            {!isCollapsed && (
+              <Box display="flex" gap={4} alignItems="center">
+                <IconButton>
+                  <PieChartOutlineOutlinedIcon />
+                </IconButton>
+                <Typography>Pie Chart</Typography>
+              </Box>
+            )}
+          </MenuItem>
+          <MenuItem
+            icon={isCollapsed ? <SsidChartOutlinedIcon /> : undefined}
+            onClick={() => {
+              setSelected('line');
+              navigate('/line');
+            }}
+            style={{
+              margin: '10px 0 20px 0',
+              color: colors.grey[100],
+            }}
+            active={selected === 'line'}
+          >
+            {!isCollapsed && (
+              <Box display="flex" gap={4} alignItems="center">
+                <IconButton>
+                  <SsidChartOutlinedIcon />
+                </IconButton>
+                <Typography>Line Chart</Typography>
               </Box>
             )}
           </MenuItem>

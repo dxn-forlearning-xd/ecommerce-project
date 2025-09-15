@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Team = () => {
+const Line = () => {
   return <div></div>;
 };
 
-export default Team;
+export default Line;

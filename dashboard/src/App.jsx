@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ColorModeContext, useMode } from './theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { Dashboard } from '@mui/icons-material';
 import TopBar from './components/global/TopBar';
 import SideBar from './components/global/SideBar';
-import Team from './pages/Team';
+import Dashboard from './pages/Dashboard';
+import Products from './pages/Products';
+import Orders from './pages/Orders';
+import Bar from './pages/Bar';
+import Pie from './pages/Pie';
+import Line from './pages/Line';
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -19,6 +23,11 @@ function App() {
             <TopBar />
             <Routes>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="bar" element={<Bar />} />
+              <Route path="/pie" element={<Pie />} />
+              <Route path="/line" element={<Line />} />
             </Routes>
           </main>
         </div>
