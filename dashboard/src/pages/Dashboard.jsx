@@ -3,12 +3,12 @@ import { Box, Button, IconButton, Typography, useTheme } from '@mui/material';
 
 import { tokens } from '../theme';
 import Bar from './Bar';
-import {
-  DownloadOutlined,
-  ImportContactsOutlined,
-  Padding,
-} from '@mui/icons-material';
+import { DownloadOutlined, ImportContactsOutlined } from '@mui/icons-material';
 import StatBox from '../components/StatBox';
+import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
+import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -24,15 +24,15 @@ const Dashboard = () => {
 
         <Button
           sx={{
-            backgroundColor: colors.blueAccent[800],
-            color: colors.grey[100],
+            backgroundColor: colors.grey[100],
+            color: colors.grey[900],
+
             fontSize: '14px',
-            fontWeight: 'bold',
             Padding: '10px 20px',
           }}
         >
           <DownloadOutlined />
-          Download Reports
+          <Typography> Download Reports</Typography>
         </Button>
       </Box>
 
@@ -49,11 +49,10 @@ const Dashboard = () => {
           justifyContent={'center'}
         >
           <StatBox
-            title="12361"
-            subtitle="email"
+            title="Orders to Process"
+            subtitle="12"
             progress={'0.8'}
-            increase={'+43%'}
-            icon={<ImportContactsOutlined />}
+            icon={<InventoryOutlinedIcon />}
           />
         </Box>
         <Box
@@ -63,11 +62,10 @@ const Dashboard = () => {
           justifyContent={'center'}
         >
           <StatBox
-            title="12361"
-            subtitle="email"
+            title="Top Selling"
+            subtitle="12"
             progress={'0.8'}
-            increase={'+43%'}
-            icon={<ImportContactsOutlined />}
+            icon={<SellOutlinedIcon />}
           />
         </Box>
         <Box
@@ -77,11 +75,10 @@ const Dashboard = () => {
           justifyContent={'center'}
         >
           <StatBox
-            title="12361"
-            subtitle="email"
+            title="Low Stock Items"
+            subtitle="12"
             progress={'0.8'}
-            increase={'+43%'}
-            icon={<ImportContactsOutlined />}
+            icon={<Inventory2OutlinedIcon />}
           />
         </Box>
         <Box
@@ -91,19 +88,17 @@ const Dashboard = () => {
           justifyContent={'center'}
         >
           <StatBox
-            title="12361"
-            subtitle="email"
+            title="Sales"
+            subtitle="12"
             progress={'0.8'}
-            increase={'+43%'}
-            icon={<ImportContactsOutlined />}
+            icon={<AttachMoneyOutlinedIcon />}
           />
         </Box>
 
         <Box
           gridColumn="span 8"
-          gridAutoRows="span 2"
+          gridAutoRows="span 1"
           backgroundColor={colors.primary[400]}
-          height={'280px'}
         >
           <Box
             p={'10px 30px'}
@@ -120,14 +115,29 @@ const Dashboard = () => {
                 <ImportContactsOutlined />
               </IconButton>
             </Box>
-            <Box width="auto" height="200px">
-              <Bar isDashboard={true} />
-            </Box>
           </Box>
         </Box>
         <Box
           gridColumn={'span 4'}
-          gridRow={'span 2'}
+          gridRow={'span 1'}
+          backgroundColor={colors.primary[400]}
+        >
+          <Box
+            p={'10px 30px'}
+            justifyContent={'space-between'}
+            alignItems={'center'}
+          >
+            <Box
+              display={'flex'}
+              justifyContent={'space-between'}
+              alignItems={'center'}
+            >
+              <Typography variant="h6">Rvenue</Typography>
+            </Box>
+          </Box>
+        </Box>
+        <Box
+          gridColumn={'span 12'}
           backgroundColor={colors.primary[400]}
           height={'280px'}
         >
@@ -143,6 +153,9 @@ const Dashboard = () => {
             >
               <Typography variant="h6">Rvenue</Typography>
             </Box>
+          </Box>
+          <Box width="auto" height="200px">
+            <Bar isDashboard={true} />
           </Box>
         </Box>
       </Box>

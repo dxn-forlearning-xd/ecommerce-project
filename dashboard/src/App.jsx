@@ -10,6 +10,8 @@ import Orders from './pages/Orders';
 import Bar from './pages/Bar';
 import Pie from './pages/Pie';
 import Line from './pages/Line';
+import ProductDetail from './pages/ProductDetail';
+import OrderDetail from './pages/OrderDetail';
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -28,6 +30,8 @@ function App() {
               <Route path="bar" element={<Bar />} />
               <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
+              <Route path="/products/:id" element={<ProductDetail />} />
+              <Route path="/orders/:id" element={<OrderDetail />} />
             </Routes>
           </main>
         </div>

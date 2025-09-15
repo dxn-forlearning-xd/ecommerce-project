@@ -11,13 +11,14 @@ const StatBox = ({ title, subtitle, icon, progress, increase }) => {
       justifyContent={'space-between'}
       alignItems={'center'}
       width={'100%'}
+      height={'100%'}
       padding={'10px'}
       backgroundColor={colors.primary[400]}
     >
       <Box>
         {icon}
         <Box>
-          <Typography sx={{ fontSize: 'clamp(12px, 2vw, 24px)' }}>
+          <Typography sx={{ fontSize: 'clamp(12px, 1.5vw, 24px)' }}>
             {title}
           </Typography>
         </Box>
