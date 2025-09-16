@@ -1,16 +1,44 @@
 import { DataGrid } from '@mui/x-data-grid';
 import Header from '../components/Header';
-import { Box, Typography, useTheme, Button } from '@mui/material';
+import { Box, useMediaQuery, useTheme, Button } from '@mui/material';
 import { tokens } from '../theme';
-import { IconButton } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { fetchProductList } from '../api/productApi';
 
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const Products = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isMobile = useMediaQuery('(max-width:600px)');
+
+  const [paginationModel, setPaginationModel] = useState({
+    pageSize: 10,
+    page: 0,
+  });
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchProductList();
+        const productDetail = data.products.map((p) => ({
+          id: p.id,
+          name: p.title,
+          price: p.price,
+          stock: p.stock,
+          category: p.category,
+        }));
+        setProducts(productDetail);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+
   const columns = [
     { field: 'id', headerName: 'ID', flex: 1 },
     { field: 'name', headerName: 'Product Name', flex: 1 },
@@ -46,20 +74,18 @@ const Products = () => {
       },
     },
   ];
-
-  const rows = [
-    { id: 1, name: '苹果', price: 3.5, stock: 100, category: '水果' },
-    { id: 2, name: '香蕉', price: 2.5, stock: 50, category: '水果' },
-    { id: 3, name: '牛奶', price: 5, stock: 20, category: '饮品' },
-  ];
+  const displayedColumns = isMobile
+    ? columns.filter((col) => ['name', 'stock', 'actions'].includes(col.field))
+    : columns;
   return (
     <>
       <Box>
         <Header title={'Products'} />
       </Box>
-      <Box display={'grid'}>
+      <Box width={'500'} display={'grid'}>
         <DataGrid
           sx={{
+            minWidth: 0,
             '& .MuiDataGrid-cell:focus-within': {
               outline: 'none',
             },
@@ -81,11 +107,11 @@ const Products = () => {
               color: colors.grey[100],
             },
           }}
-          rows={rows}
-          columns={columns}
-          pageSize={15}
-          rowsPerPageOptions={[5, 10, 20]}
-          checkboxSelection
+          rows={products}
+          columns={displayedColumns}
+          pagination
+          paginationModel={paginationModel}
+          onPaginationModelChange={setPaginationModel}
           disableRowSelectionOnClick
         />
       </Box>

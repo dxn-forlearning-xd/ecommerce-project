@@ -15,7 +15,6 @@ import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 import SsidChartOutlinedIcon from '@mui/icons-material/SsidChartOutlined';
-import PieChartOutlineOutlinedIcon from '@mui/icons-material/PieChartOutlineOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { HomeOutlined } from '@mui/icons-material';
 
@@ -31,13 +30,13 @@ const SideBar = () => {
   const [selected, setSelected] = useState('Dashboard');
 
   return (
-    <Box>
+    <Box display="flex" alignItems="stretch">
       <Sidebar
         rootStyles={{
           [`.${sidebarClasses.container}`]: {
             backgroundColor: colors.primary[400],
             color: colors.grey[100],
-            height: '100vh',
+            height: '100%',
           },
 
           [`.ps-menu-button:hover *`]: {
@@ -218,27 +217,7 @@ const SideBar = () => {
               </Box>
             )}
           </MenuItem>
-          <MenuItem
-            icon={isCollapsed ? <PieChartOutlineOutlinedIcon /> : undefined}
-            onClick={() => {
-              setSelected('pie');
-              navigate('/pie');
-            }}
-            style={{
-              margin: '10px 0 20px 0',
-              color: colors.grey[100],
-            }}
-            active={selected === 'pie'}
-          >
-            {!isCollapsed && (
-              <Box display="flex" gap={4} alignItems="center">
-                <IconButton>
-                  <PieChartOutlineOutlinedIcon />
-                </IconButton>
-                <Typography>Pie Chart</Typography>
-              </Box>
-            )}
-          </MenuItem>
+
           <MenuItem
             icon={isCollapsed ? <SsidChartOutlinedIcon /> : undefined}
             onClick={() => {

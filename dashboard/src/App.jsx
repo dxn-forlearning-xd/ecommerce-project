@@ -8,13 +8,13 @@ import Dashboard from './pages/Dashboard';
 import Products from './pages/Products';
 import Orders from './pages/Orders';
 import Bar from './pages/Bar';
-import Pie from './pages/Pie';
 import Line from './pages/Line';
 import ProductDetail from './pages/ProductDetail';
 import OrderDetail from './pages/OrderDetail';
 
 function App() {
   const [theme, colorMode] = useMode();
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
@@ -23,15 +23,14 @@ function App() {
           <SideBar />
           <main className="content">
             <TopBar />
+
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="bar" element={<Bar />} />
-              <Route path="/pie" element={<Pie />} />
               <Route path="/line" element={<Line />} />
               <Route path="/products/:id" element={<ProductDetail />} />
-              <Route path="/orders/:id" element={<OrderDetail />} />
             </Routes>
           </main>
         </div>

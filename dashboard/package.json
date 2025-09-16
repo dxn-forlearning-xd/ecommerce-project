@@ -16,6 +16,7 @@
     "@mui/material": "^7.3.2",
     "@mui/x-data-grid": "^8.11.2",
     "@nivo/bar": "^0.99.0",
+    "@nivo/line": "^0.99.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-pro-sidebar": "^1.1.0",
