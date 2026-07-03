@@ -24,7 +24,7 @@ export function OrderProvider({ children }) {
       items: products,
       total: products.reduce((sum, p) => sum + p.price * p.qty, 0),
       createdAt: new Date().toISOString(),
-      status: '已支付',
+      status: 'Paid',
     };
     setOrders((prev) => [newOrder, ...prev]);
   };

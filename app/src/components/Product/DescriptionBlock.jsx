@@ -14,18 +14,18 @@ function DescriptionBlock({
       borderRadius="lg"
       boxShadow="0 4px 12px rgba(0, 0, 0, 0.08)"
     >
-      {availability && <Text color="green.600">✅ {availability}</Text>}
+      {availability && <Text color="green.600">{availability}</Text>}
       <Text fontSize="sm" color="gray.800">
         {description}
       </Text>
       {shippingInfo && (
         <Text fontSize="sm" color="gray.600">
-          🚚 {shippingInfo}
+          {shippingInfo}
         </Text>
       )}
       {warrantyInfo && (
         <Text fontSize="sm" color="gray.600">
-          🛡️ {warrantyInfo}
+          {warrantyInfo}
         </Text>
       )}
     </Stack>

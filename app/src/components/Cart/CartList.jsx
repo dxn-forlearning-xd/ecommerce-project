@@ -10,19 +10,18 @@ import {
   Checkbox,
 } from '@chakra-ui/react';
 import { FiArrowLeft, FiTrash2, FiPlus, FiMinus } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
+
 import { useCart } from '../../context/CartContext';
 import { useState } from 'react';
 
 function CartList() {
-  const navigate = useNavigate();
   const { items, setQty, removeItem, subtotal } = useCart();
   const [selectedItems, setSelectedItems] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleToggle = (id) => {
     setSelectedItems((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
 
@@ -39,7 +38,7 @@ function CartList() {
           size="sm"
           onClick={() => setIsEditing(!isEditing)}
         >
-          {isEditing ? '完成' : '批量删除'}
+          {isEditing ? 'Done' : 'Delete'}{' '}
         </Button>
         {isEditing ? (
           <Button
@@ -49,14 +48,14 @@ function CartList() {
               removeSelected();
             }}
           >
-            删除
+            Delete
           </Button>
         ) : (
           ''
         )}
         {items.length === 0 ? (
           <Box p={6} color="gray.500" borderRadius="md" textAlign="center">
-            购物车是空的
+            Your cart is empty
           </Box>
         ) : (
           items.map((item) => (
@@ -84,7 +83,7 @@ function CartList() {
                   <Text fontWeight="bold" noOfLines={2}>
                     {item.title}
                   </Text>
-                  <Text fontWeight="bold">￥{item.price}</Text>
+                  <Text fontWeight="bold">€{item.price}</Text>
                   <HStack>
                     <IconButton
                       size="sm"

@@ -8,12 +8,12 @@ function PriceBlock({ price, discountPercentage }) {
   return (
     <HStack spacing={3}>
       <Text fontSize="xl" fontWeight="bold">
-        ￥{discounted ?? price}
+        €{discounted ?? price}
       </Text>
       {discounted && (
         <>
           <Text as="s" color="gray.500">
-            ￥{price}
+            €{price}
           </Text>
           <Text color="green.600" fontWeight="medium">
             -{discountPercentage}%

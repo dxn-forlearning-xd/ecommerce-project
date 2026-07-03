@@ -17,10 +17,10 @@ function CartItem({ item }) {
             {item.brand}
           </Text>
           <Text fontSize="sm" color="gray.500">
-            规格: {item.size}
+            quantities: {item.size}
           </Text>
           <Text fontWeight="bold" color="gray.800">
-            ￥{item.price}
+            €{item.price}
           </Text>
           <HStack>
             <IconButton size="sm">

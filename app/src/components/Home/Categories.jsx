@@ -12,7 +12,6 @@ import {
   SkeletonText,
 } from '@chakra-ui/react';
 import { BiGridSmall } from 'react-icons/bi';
-import categoryMap from '../../utils/categoryMap';
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ const Categories = () => {
     fetchWithTimeoutAndFallback(
       'https://dummyjson.com/products?limit=45',
       '/products-fallback.json',
-      { timeout: 5000 }
+      { timeout: 5000 },
     ).then((data) => {
       const allProducts = data.products;
       const categoryThumbs = {};
@@ -61,7 +60,7 @@ const Categories = () => {
           borderRadius: '2px',
         }}
       >
-        分类{' '}
+        Category
       </Text>
 
       <Grid
@@ -95,7 +94,6 @@ const Categories = () => {
               </GridItem>
             ))
           : Object.entries(categoryThumbnails).map(([cat, thumb]) => {
-              const chineseName = categoryMap[cat] || cat;
               return (
                 <GridItem
                   key={cat}
@@ -114,7 +112,7 @@ const Categories = () => {
                     onClick={() => navigate(`/category/${cat}`)}
                   >
                     <Image src={thumb} boxSize="90px" />
-                    <Text mt={1}>{chineseName}</Text>
+                    <Text mt={1}>{cat}</Text>
                   </Box>
                 </GridItem>
               );
@@ -137,7 +135,7 @@ const Categories = () => {
             onClick={() => navigate('/categories')}
           >
             <BiGridSmall size={90} color="#0a3e20" />
-            <Text mt={1}>更多</Text>
+            <Text mt={1}>More</Text>
           </Box>
         </GridItem>
       </Grid>

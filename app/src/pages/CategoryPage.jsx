@@ -12,7 +12,7 @@ import {
   IconButton,
 } from '@chakra-ui/react';
 import { FiArrowLeft } from 'react-icons/fi';
-import categoryMap from '../utils/categoryMap';
+
 import { fetchWithTimeoutAndFallback } from '../utils/api';
 import BottomNav from '../components/global/BottomNav';
 
@@ -27,7 +27,7 @@ const CategoryPage = () => {
     fetchWithTimeoutAndFallback(
       `https://dummyjson.com/products/category/${slug}`,
       '/products-by-category-fallback.json',
-      { timeout: 5000 }
+      { timeout: 5000 },
     ).then((data) => {
       setProducts(data.products || []);
       setLoading(false);
@@ -51,7 +51,7 @@ const CategoryPage = () => {
           <FiArrowLeft />
         </IconButton>
         <Text fontSize="lg" fontWeight="bold" color="#0a3e20">
-          {categoryMap[slug] || slug}
+          {slug}
         </Text>
       </HStack>
 

@@ -9,13 +9,13 @@ const ProfilePage = () => {
   const { isLoggedIn, logout } = useAuth();
 
   const user = {
-    name: 'Demo 用户',
+    name: 'Demo',
     avatar: 'avatar.jpg',
   };
 
   return (
     <Box>
-      <PageHeader PageTitle="个人主页" />
+      <PageHeader PageTitle="Profile" />
 
       <Box p={4} maxW="420px" mx="auto" bg="gray.50" minH="calc(100vh - 72px)">
         <Flex direction="column" align="center" mb={6}>
@@ -31,7 +31,7 @@ const ProfilePage = () => {
             {user.name}
           </Text>
           <Text color="gray.500" mt={1}>
-            欢迎回来！
+            Welcome Back!
           </Text>
         </Flex>
 
@@ -44,7 +44,7 @@ const ProfilePage = () => {
             _hover={{ bg: '#219150' }}
             onClick={() => navigate('/orders')}
           >
-            我的订单
+            My order
           </Button>
         </VStack>
 
@@ -58,7 +58,7 @@ const ProfilePage = () => {
             navigate('/login');
           }}
         >
-          登出
+          Log out
         </Button>
       </Box>
 

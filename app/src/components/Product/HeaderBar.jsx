@@ -7,7 +7,7 @@ function HeaderBar({}) {
   return (
     <HStack px={3} py={2} bg="white" position="sticky" top={0} zIndex={10}>
       <IconButton
-        aria-label="返回"
+        aria-label="Back"
         size="sm"
         variant="ghost"
         color="gray.700"
@@ -15,12 +15,12 @@ function HeaderBar({}) {
       >
         <FiArrowLeft />
       </IconButton>
-      <Text fontWeight="semibold">详情</Text>
+      <Text fontWeight="semibold">Details</Text>
       <Spacer />
-      <IconButton aria-label="收藏" size="sm" variant="ghost" color="gray.700">
+      <IconButton aria-label="Save" size="sm" variant="ghost" color="gray.700">
         <FiHeart />
       </IconButton>
-      <IconButton aria-label="分享" size="sm" variant="ghost" color="gray.700">
+      <IconButton aria-label="Share" size="sm" variant="ghost" color="gray.700">
         <FiShare2 />
       </IconButton>
     </HStack>

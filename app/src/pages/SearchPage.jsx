@@ -18,21 +18,19 @@ export default function SearchPage() {
     fetchWithTimeoutAndFallback(
       `https://dummyjson.com/products/search?q=${keyword}`,
       '/products-search-fallback.json',
-      { timeout: 5000 }
+      { timeout: 5000 },
     ).then((data) => setResults(data.products || []));
   }, [keyword]);
 
   return (
     <>
-      <PageHeader PageTitle={'搜索结果'}></PageHeader>
-      <Box maxW="600px" mx="auto" p={4} mb="80px">
+      <PageHeader PageTitle={'Search'}></PageHeader>
+      <Box maxW="450px" mx="auto" p={4} mb="80px">
         <Text fontSize="xl" mb={4}>
-          搜索内容：{keyword}
+          Search: {keyword}
         </Text>
         <VStack spacing={4} align="stretch">
-          {results.length === 0 && (
-            <Text color="gray.500">没有找到相关商品</Text>
-          )}
+          {results.length === 0 && <Text color="gray.500">No item found</Text>}
           {results.map((item) => (
             <HStack
               key={item.id}
@@ -51,7 +49,7 @@ export default function SearchPage() {
               />
               <VStack align="flex-start" spacing={1} flex={1}>
                 <Text fontWeight="bold">{item.title}</Text>
-                <Text color="gray.600">￥{item.price}</Text>
+                <Text color="gray.600">€{item.price}</Text>
               </VStack>
             </HStack>
           ))}

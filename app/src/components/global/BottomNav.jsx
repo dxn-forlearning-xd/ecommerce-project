@@ -30,7 +30,7 @@ const BottomNav = () => {
       <Flex justify="space-around" align="center" p={2}>
         <Box display="flex" flexDirection="column" alignItems="center">
           <IconButton
-            aria-label="首页"
+            aria-label="Home"
             fontSize="24px"
             color={location.pathname === '/' ? '#187a46' : 'black'}
             onClick={() => {
@@ -41,7 +41,7 @@ const BottomNav = () => {
             <FiHome />
           </IconButton>
           <Text color={location.pathname === '/' ? '#187a46' : 'black'}>
-            首页
+            Home
           </Text>
         </Box>
 
@@ -52,7 +52,7 @@ const BottomNav = () => {
           position="relative"
         >
           <IconButton
-            aria-label="消息"
+            aria-label="Message"
             fontSize="28px"
             color={location.pathname === '/messages' ? '#187a46' : 'black'}
             onClick={() => navigate('/messages')}
@@ -71,13 +71,13 @@ const BottomNav = () => {
             />
           )}
           <Text color={location.pathname === '/messages' ? '#187a46' : 'black'}>
-            消息
+            Message
           </Text>
         </Box>
 
         <Box display="flex" flexDirection="column" alignItems="center">
           <IconButton
-            aria-label="购物车"
+            aria-label="Cart"
             fontSize="24px"
             color={location.pathname === '/cart' ? '#187a46' : 'black'}
             onClick={() => navigate('/cart')}
@@ -85,13 +85,13 @@ const BottomNav = () => {
             <FiShoppingCart />
           </IconButton>
           <Text color={location.pathname === '/cart' ? '#187a46' : 'black'}>
-            购物车
+            Cart
           </Text>
         </Box>
 
         <Box display="flex" flexDirection="column" alignItems="center">
           <IconButton
-            aria-label="个人主页"
+            aria-label="Profile"
             fontSize="24px"
             color={
               ['/profile', '/login'].includes(location.pathname)
@@ -109,7 +109,7 @@ const BottomNav = () => {
                 : 'black'
             }
           >
-            个人主页
+            Profile
           </Text>
         </Box>
       </Flex>

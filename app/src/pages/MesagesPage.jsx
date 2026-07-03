@@ -10,7 +10,7 @@ const MessagesPage = () => {
 
   return (
     <>
-      <PageHeader PageTitle="消息" />
+      <PageHeader PageTitle="Message" />
       <Box
         p={4}
         maxW="420px"
@@ -20,11 +20,11 @@ const MessagesPage = () => {
       >
         {!isLoggedIn ? (
           <Text color="gray.500" textAlign="center" mt={10}>
-            请先登录
+            Please login first
           </Text>
         ) : messages.length === 0 ? (
           <Text color="gray.500" textAlign="center" mt={10}>
-            这里还没有任何消息。
+            No message
           </Text>
         ) : (
           <VStack spacing={4} align="stretch">

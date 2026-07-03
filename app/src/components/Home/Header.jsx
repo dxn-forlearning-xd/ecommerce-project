@@ -14,8 +14,8 @@ const Header = () => {
       navigate(`/search?q=${encodeURIComponent(keyword)}`);
     } else {
       toaster.create({
-        title: '输入为空',
-        description: '请输入搜索内容',
+        title: 'No input provided',
+        description: 'Please enter a search term',
         type: 'failed',
         duration: 2000,
       });
@@ -47,24 +47,9 @@ const Header = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         />
-        <IconButton
-          aria-label="识图"
-          onClick={() =>
-            toaster.create({
-              title: '识图',
-              description: '打开识图功能',
-              type: 'success',
-              duration: 2000,
-            })
-          }
-          bg="gray.100"
-          borderRadius="50%"
-          ml="-6px"
-        >
-          <CiCamera />
-        </IconButton>
+
         <Input
-          placeholder="搜索商品"
+          placeholder="Search item"
           flex={1}
           borderRadius="md"
           bg="gray.100"

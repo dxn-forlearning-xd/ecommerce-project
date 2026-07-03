@@ -28,12 +28,12 @@ export default function CheckoutPage() {
       clearCart();
     }
     navigate('/orders');
-    toaster.success({ title: '付款成功' });
+    toaster.success({ title: 'Paid successfully' });
   };
 
   return (
     <>
-      <PageHeader PageTitle={'确认订单'}></PageHeader>
+      <PageHeader PageTitle={'continue'}></PageHeader>
       <Box maxW="420px" mx="auto" p={4} bg="gray.50">
         <VStack align="stretch" spacing={3}>
           {items.map((x) => (
@@ -50,9 +50,7 @@ export default function CheckoutPage() {
                 <Text noOfLines={2}>{x.title}</Text>
                 <HStack justify="space-between" w="100%">
                   <Text color="gray.600">× {x.qty}</Text>
-                  <Text fontWeight="bold">
-                    ￥{(x.price * x.qty).toFixed(2)}
-                  </Text>
+                  <Text fontWeight="bold">€{(x.price * x.qty).toFixed(2)}</Text>
                 </HStack>
               </VStack>
             </HStack>
@@ -60,9 +58,9 @@ export default function CheckoutPage() {
         </VStack>
 
         <HStack justify="space-between" my={6}>
-          <Text>合计</Text>
+          <Text>Total</Text>
           <Text fontWeight="bold" fontSize="lg">
-            ￥{total.toFixed(2)}
+            €{total.toFixed(2)}
           </Text>
         </HStack>
 
@@ -74,7 +72,7 @@ export default function CheckoutPage() {
           size="lg"
           onClick={handlePay}
         >
-          立即支付
+          Pay now
         </Button>
       </Box>
 

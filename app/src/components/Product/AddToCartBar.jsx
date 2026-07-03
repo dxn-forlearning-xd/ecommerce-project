@@ -19,8 +19,8 @@ function AddToCartBar({ product }) {
     addToCart(product, qty);
 
     toaster.create({
-      title: '已加入购物车',
-      description: `商品: ${product.title}，数量: ${qty}`,
+      title: 'Added to cart',
+      description: `Product: ${product.title}, Quantity: ${qty}`,
       type: 'success',
       duration: 2000,
     });
@@ -86,7 +86,7 @@ function AddToCartBar({ product }) {
           bg="#428960"
           color="#ffffff"
         >
-          加入购物车
+          Add to Cart
         </Button>
 
         <Button
@@ -96,16 +96,18 @@ function AddToCartBar({ product }) {
             isLoggedIn
               ? handleBuyNow()
               : toaster.create({
-                  title: '请先登录',
-                  type: '',
+                  description: 'Please log in first',
+                  status: 'error',
                   duration: 2000,
+                  isClosable: true,
+                  position: 'top',
                 });
           }}
           isDisabled={disabled}
           bg="orange.500"
           color="#ffffff"
         >
-          立即购买
+          Buy Now
         </Button>
       </HStack>
     </Box>

@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { FiArrowLeft } from 'react-icons/fi';
 import BottomNav from '../components/global/BottomNav';
-import categoryMap from '../utils/categoryMap';
+
 import { fetchWithTimeoutAndFallback } from '../utils/api';
 
 const AllCategoriesPage = () => {
@@ -23,7 +23,7 @@ const AllCategoriesPage = () => {
     fetchWithTimeoutAndFallback(
       'https://dummyjson.com/products?limit=200',
       '/products-fallback.json',
-      { timeout: 5000 }
+      { timeout: 5000 },
     ).then((data) => {
       const allProducts = data.products;
       const thumbs = {};
@@ -53,7 +53,7 @@ const AllCategoriesPage = () => {
           <FiArrowLeft />
         </IconButton>
         <Text fontSize="lg" fontWeight="bold" color="#0a3e20">
-          全部分类
+          All
         </Text>
       </HStack>
       <Box p={4} mb="80px" maxW="420px" mx="auto" bg="gray.50" minH="100vh">
@@ -63,7 +63,6 @@ const AllCategoriesPage = () => {
                 <Skeleton key={i} height="120px" borderRadius="md" />
               ))
             : Object.entries(categoryThumbs).map(([cat, thumb]) => {
-                const chineseName = categoryMap[cat] || cat;
                 return (
                   <GridItem
                     key={cat}
@@ -77,13 +76,13 @@ const AllCategoriesPage = () => {
                   >
                     <Image
                       src={thumb}
-                      alt={chineseName}
+                      alt={cat}
                       boxSize="80px"
                       mx="auto"
                       borderRadius="md"
                     />
                     <Text mt={2} fontSize="sm">
-                      {chineseName}
+                      {cat}
                     </Text>
                   </GridItem>
                 );

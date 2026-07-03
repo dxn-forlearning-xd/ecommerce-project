@@ -21,7 +21,7 @@ function CartSummary() {
   const handleClick = () => {
     if (cartItems.length === 0) {
       toaster.create({
-        description: '购物车内没有物品',
+        description: 'No items in your cart.',
         status: 'error',
         duration: 2000,
         isClosable: true,
@@ -29,7 +29,7 @@ function CartSummary() {
       });
     } else if (!isLoggedIn) {
       toaster.create({
-        description: '请先登录',
+        description: 'Please log in first',
         status: 'error',
         duration: 2000,
         isClosable: true,
@@ -55,8 +55,8 @@ function CartSummary() {
     >
       <VStack mb="90px" spacing={3} align="stretch">
         <HStack justify="space-between">
-          <Text>共计</Text>
-          <Text fontWeight="bold">￥{total.toFixed(2)}</Text>
+          <Text>Total</Text>
+          <Text fontWeight="bold">€{total.toFixed(2)}</Text>
         </HStack>
         <Button
           bg="#428960"
@@ -66,7 +66,7 @@ function CartSummary() {
           onClick={handleClick}
           isDisabled={count === 0}
         >
-          全部结算
+          Checkout
         </Button>
       </VStack>
     </Box>

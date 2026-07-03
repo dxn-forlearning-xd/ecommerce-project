@@ -34,7 +34,7 @@ const RecommendProducts = () => {
     fetchWithTimeoutAndFallback(
       'https://dummyjson.com/products?limit=100',
       '/products-fallback.json',
-      { timeout: 5000 }
+      { timeout: 5000 },
     ).then((data) => {
       const shuffled = shuffleArray(data.products);
       setProducts(shuffled);
@@ -52,7 +52,7 @@ const RecommendProducts = () => {
           }, 500);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (loaderRef.current) {
@@ -92,7 +92,7 @@ const RecommendProducts = () => {
           borderRadius: '2px',
         }}
       >
-        精选好物{' '}
+        Top picks
       </Text>
 
       <Box mb="80px" maxW="420px" mx="auto" px={2}>
@@ -154,7 +154,7 @@ const RecommendProducts = () => {
                       textAlign="center"
                       letterSpacing="tight"
                     >
-                      ￥{product.price}
+                      €{product.price}
                     </Text>
                   </Box>
                 </GridItem>

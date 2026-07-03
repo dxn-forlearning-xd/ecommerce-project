@@ -19,7 +19,7 @@ export default function ProductDetailPage() {
     fetchWithTimeoutAndFallback(
       `https://dummyjson.com/products/${id}`,
       '/products-by-id-fallback.json',
-      { timeout: 5000 }
+      { timeout: 5000 },
     )
       .then(setProduct)
       .catch(() => setProduct(null));
